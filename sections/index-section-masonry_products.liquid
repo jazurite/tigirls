@@ -17,8 +17,8 @@
       <div class="tt-product-index-init tt-add-item">
         {%- for product in collection.products limit: length -%}
         {%- if item.doblesize -%}
-        {%- capture masonrydoublesize -%}{%- cycle = '', '', 'double-size', '', '', 'double-size', '', '', '', '' -%}{%- endcapture -%}
-        {%- capture external_size -%}{%- cycle = '500x', '500x', '1024x', '500x', '500x', '1024x', '500x', '500x', '500x', '500x' -%}{%- endcapture -%}
+        {%- capture masonrydoublesize -%}{%- cycle nil, '', 'double-size', '', '', 'double-size', '', '', '', '' -%}{%- endcapture -%}
+        {%- capture external_size -%}{%- cycle nil, '500x', '1024x', '500x', '500x', '1024x', '500x', '500x', '500x', '500x' -%}{%- endcapture -%}
         {%- else -%}{%- assign external_size = '500x' -%}
         {%- endif -%}
         
@@ -117,4 +117,19 @@
     }
   ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- cycle = '', '', 'double-size', '', '', 'double-size', '', '', '', ''
+    -%}"
+  to: "{%- cycle nil, '', 'double-size', '', '', 'double-size', '', '', '', '' -%}"
+  position: 1158..1233
+- from: "{%- cycle = '500x', '500x', '1024x', '500x', '500x', '1024x', '500x', '500x',
+    '500x', '500x' -%}"
+  to: "{%- cycle nil, '500x', '1024x', '500x', '500x', '1024x', '500x', '500x', '500x',
+    '500x' -%}"
+  position: 1289..1380
+{%- endcomment -%}

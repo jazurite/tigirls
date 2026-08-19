@@ -1,6 +1,6 @@
 {% assign item = section.settings %}
 
-{%- capture bgco =  -%}
+{%- capture bgco -%}
 {% if section.settings.usebgcolor %}
 style="background: {{ section.settings.bgco }};
 {% if section.settings.usebgimage %}
@@ -488,4 +488,13 @@ background-repeat: no-repeat;
     }
   ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- capture bgco =  -%}"
+  to: "{%- capture bgco -%}"
+  position: 38..58
+{%- endcomment -%}
